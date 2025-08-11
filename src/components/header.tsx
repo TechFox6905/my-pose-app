@@ -4,6 +4,7 @@ import { Activity } from "lucide-react"
 import Link from "next/link"
 import { Button } from "@/src/components/ui/button"
 import dynamic from "next/dynamic"
+import React from "react"
 
 // Dynamically import Clerk components to handle missing keys
 const SignInButton = dynamic(() => import("@clerk/nextjs").then((mod) => ({ default: mod.SignInButton })), {
@@ -20,11 +21,13 @@ const SignedIn = dynamic(() => import("@clerk/nextjs").then((mod) => ({ default:
 const SignedOut = dynamic(() => import("@clerk/nextjs").then((mod) => ({ default: mod.SignedOut })), { ssr: false })
 const UserButton = dynamic(() => import("@clerk/nextjs").then((mod) => ({ default: mod.UserButton })), { ssr: false })
 
-// Check if Clerk is configured
-const isClerkConfigured = typeof window !== "undefined" && process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+
 
 export function Header() {
+  // Check if Clerk is configured - use a consistent approach
+  const isClerkConfigured = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
   return (
+    
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container flex h-16 items-center justify-between px-4 md:px-6">
         <div className="flex items-center space-x-2">

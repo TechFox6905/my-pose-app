@@ -11,7 +11,7 @@ const SignInButton = dynamic(() => import("@clerk/nextjs").then((mod) => ({ defa
 const SignedIn = dynamic(() => import("@clerk/nextjs").then((mod) => ({ default: mod.SignedIn })), { ssr: false })
 const SignedOut = dynamic(() => import("@clerk/nextjs").then((mod) => ({ default: mod.SignedOut })), { ssr: false })
 
-const isClerkConfigured = typeof window !== "undefined" && process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+const isClerkConfigured = !!process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
 
 export function CTASection() {
   return (
