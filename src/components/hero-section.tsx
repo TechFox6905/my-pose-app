@@ -5,6 +5,7 @@ import { Button } from "@/src/components/ui/button"
 import { Badge } from "@/src/components/ui/badge"
 import { Play, ArrowRight, CheckCircle } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link";
 
 export function HeroSection() {
   return (
@@ -37,6 +38,7 @@ export function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
+              <Link href="/upload">
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-blue-500 to-green-500 hover:from-blue-600 hover:to-green-600 text-white px-8"
@@ -44,6 +46,7 @@ export function HeroSection() {
                 Try Live Demo
                 <Play className="ml-2 h-4 w-4" />
               </Button>
+              </Link>
               <Button size="lg" variant="outline" className="border-gray-300 hover:bg-gray-50 bg-transparent">
                 View Documentation
                 <ArrowRight className="ml-2 h-4 w-4" />
